@@ -102,7 +102,25 @@ reg.fit(x_train, y_train)
 # generate predictions
 y_hat_train = reg.predict(x_train)
 y_hat_test = reg.predict(x_test)
+y_hat_test_proba = reg.predict_proba(x_test)      # each prediction has a probability. For example, how probable that prediction is.
 
+################ Confusion matrix
+from sklearn import metrics
+confusion = metrics.confusion_matrix(y_test, y_hat_test)
+
+class_names=cohort['actualhospitalmortality'].cat.categories
+disp = metrics.ConfusionMatrixDisplay.from_estimator(
+    reg, x_test, y_test, display_labels=class_names,
+    cmap=plt.cm.Blues)
+
+plt.show()
+
+## Model Accuracy with Confusion Matrix >> .82
+acc = metrics.accuracy_score(y_test, y_hat_test)
+print(f"Accuracy (model) = {acc:.2f}")
+
+
+########### Accuracy
 #  accuracy on training set
 acc_train = np.mean(y_hat_train == y_train)
 print(f'Accuracy on training set: {acc_train:.2f}')
