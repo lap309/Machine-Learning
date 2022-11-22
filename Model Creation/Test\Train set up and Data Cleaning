@@ -1,0 +1,31 @@
+############# Prepping Test and Data Sets
+from sklearn.model_selection import train_test_split
+
+x = df[input_features]
+y = df[outcome]
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 42)    #will put 70% of data into the training set, 30% to test
+                                                                                                  # 70/30 train & test is normal
+                                                                              # random_state specifies the random number generator, allowing for reproduceability
+                                                                              # this will make the random number generator produce the same "Random" split in the future
+#############Checking for missing data
+# We will use the training median to replace missing values in both the test and training data, this will avoid data leaking between the two sets. Usually we are not missing data at random
+
+# impute missing values from the training set
+x_train = x_train.fillna(x_train.median())
+x_test = x_test.fillna(x_train.median())
+
+############# Normalization
+# there are several pre-built normilization programs\packages
+#Min-Max Scaler (General normalization): Subtract mean, divide by standard deviation. from sklearn package which scales each feature between zero and one
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()                             # Set up scaler model
+
+# Alternative is zero mean, unit variance
+# from sklearn.preprocessing import StandardScaler
+
+scaler.fit(x_train)                                 # apply\fit the scaler on the training dataset
+x_train = scaler.transform(x_train)                 # scale the training set
+
+x_test = scaler.transform(x_test)                   # scale the test set
