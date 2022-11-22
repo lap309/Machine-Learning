@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from sklearn.linear_model import LinearRegression
 reg = LinearRegression()                                      # create model
 
-# use a single feature (apache score)
+#################Linear Regression with a single feature
 # note: remove the reshape if fitting to >1 input variable
 X = df['col_name'].values.reshape(-1, 1)
 y = df['col_name'].values
@@ -22,7 +22,7 @@ plt.scatter(X, y,  color='black', marker = 'x')               # the red line is 
 plt.plot(X_fit, y_fit, color='red', linewidth=2)
 plt.show()
 
-##################### Optional
+########Optional
 ## SIGMOID FUNCTION (aka Logistic Function)
 # This function gives an 's' shaped curve from taking the dat aand mapping it into a value between 0-1, making them logisitc values
 
@@ -35,3 +35,32 @@ x = np.linspace(-1, 1, 50)
 
 plt.plot(x, sigmoid(x))
 plt.show()
+
+######################### Linear Regression with 2 features
+# partition data into training and test sets
+X = cohort[features]
+y = cohort[outcome]
+x_train, x_test, y_train, y_test = train_test_split(X, y, train_size = 0.7, random_state = 42)
+
+# restructure data for input into model
+# note: remove the reshape if fitting to >1 input variable
+x_train = x_train.values.reshape(-1, 1)
+y_train = y_train.values.ravel()
+x_test = x_test.values.reshape(-1, 1)
+y_test = y_test.values.ravel()
+
+# train model
+reg = LogisticRegression(random_state=0)
+reg.fit(x_train, y_train)
+
+# generate predictions
+y_hat_train = reg.predict(x_train)
+y_hat_test = reg.predict(x_test)
+
+#  accuracy on training set
+acc_train = np.mean(y_hat_train == y_train)
+print(f'Accuracy on training set: {acc_train:.2f}')
+
+#  accuracy on test set
+acc_test = np.mean(y_hat_test == y_test)
+print(f'Accuracy on test set: {acc_test:.2f}')
