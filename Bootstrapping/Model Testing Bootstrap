@@ -1,0 +1,86 @@
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.utils import resample
+from sklearn.metrics import accuracy_score
+
+
+############# Training Model
+# partition data into training and test sets
+X = df[input_features]
+y = df[outcome]
+x_train, x_test, y_train, y_test = train_test_split(X, y, train_size = 0.7, random_state = 42)
+
+# restructure data for input into model
+# note: remove the reshape if fitting to >1 input variable
+x_train = x_train.values.reshape(-1, 1)
+y_train = y_train.values.ravel()
+x_test = x_test.values.reshape(-1, 1)
+y_test = y_test.values.ravel()
+
+# train model
+reg = LogisticRegression(random_state=0)      # creates the statistical model
+reg.fit(x_train, y_train)                     # applies that model to the traininng sets
+
+# bootstrap predictions
+accuracy = []                                 # empty list where bootstrap outputs will go
+n_iterations = 1000                           # how many times to run the simulation
+for i in range(n_iterations):
+    X_boot, y_boot = resample(x_train, y_train, replace=True)     # temporary sample holds from bootstrapping for the current iteration in the for loop
+    # make predictions                                                  # we will use X_boot to predict y_hat, and then compare y_hat to y_boot
+    y_hat = reg.predict(X_boot)                                   
+    # evaluate model
+    score = accuracy_score(y_bs, y_hat)                            # calculates the accuracy between y_hat and y_boot
+    accuracy.append(score)                                          # collects all accuracy scores
+    
+
+################## Plotting
+import seaborn as sns
+
+# plot accuracy distribution
+sns.kdeplot(accuracy)
+plt.title('Accuracy across 1000 bootstrap samples of the Logistic Regression Test Set')
+plt.xlabel('Accuracy')
+plt.show()
+
+
+################### Inference and Analyzation
+# We can now take the mean accuracy across the bootstrap samples and compute confidence intervals. 
+#Confidence Intervals tells the reliability of the estimation procedure, indicating that we are 95% confident the true parameter lies within this interval
+#It does !NOT! mean that there is a 95% probability the true parameter lies within the interval
+#There are several methods we can use
+
+### Percentile Method (confidence interval method)
+# This method is simple and does not require our sampling distribution to be normally distributed and will work regardless of the shape of the sample
+# This method will return a range of points that cover the middle 95% of the bootstrap sampling distributions (hence why the shape of the sample doesn't matter)
+# Confidence Intervals DO NOT mean there is a 
+
+
+
+#Process: Take the mean of each distribution and use with , alpha/2 and (1-alpha)/2   [ 2.5, 97.5]
+#Code:
+
+#get median
+mean=np.percentile(accuracy, 50)      # Get 50th percentile (median) of our accuracy list
+
+# get confidence interval
+alpha = ____
+lower_ci = np.percentile( accuracy, alpha/2 )
+upper_ci = np.percentile(accuracy, (1-alpha)/2 )
+
+# Output Summary Printed
+print('n = {}\n{}% Confidence Interal\n[{.2f},{.2f}]'.format(n_iterations, (100-alpha),lower_ci, upper_ci)
+
+
+
+# New graph with confidence intervals
+sns.kdeplot(accuracy)
+plt.title("Accuracy across 1000 bootstrap samples of the held-out test set\n"
+          "showing median with 95\\% confidence intervals")
+plt.xlabel("Accuracy")
+plt.axvline(median,0, 14, linestyle="--", color="red")
+plt.axvline(lower_ci,0, 14, linestyle="--", color="red")
+plt.axvline(upper_ci,0, 14, linestyle="--", color="red")
+plt.show()
+
+
