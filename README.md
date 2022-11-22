@@ -6,3 +6,12 @@ training data when we have known outcomes and can use that to compare/test the d
 
 #### Unsupervised Learning
 training data when we do !NOT! have known outocomes
+
+#### Classification
+Predicting a categorical value or outcome
+
+#### Regression
+Predicting a continuous variable
+However, regression models can be used for both regressoin and classification tasks.
+    - Linear
+    - Logistic
