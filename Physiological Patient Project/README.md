@@ -5,6 +5,9 @@ This project will predict the outcome of patients admitted to intensive care uni
 ### Abstract
 This project is a demo version of the eICU Collaborative Research Database, a multi-center database comprised of deidentified health data for over 200,000 admissions to ICUs across the United States between 2014-2015. The database includes vital sign measurements, care plan documentation, severity of illness measures, diagnosis information, and treatment information. Data is collected through the Philips eICU program, a critical care telehealth program that delivers information to caregivers at the bedside. This open access demo allows researchers to ascertain whether the eICU Collaborative Research Database is suitable for their work. It includes over 2,500 unit stays selected from 20 of the larger hospitals in the eICU Collaborative Research Database.
 
+#### Variables
+- APACHE_IV score : a measure of severity of illness
+
 
 
 
