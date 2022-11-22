@@ -52,3 +52,61 @@ scaler.fit(x_train)                                 # apply\fit the scaler on th
 x_train = scaler.transform(x_train)                 # scale the training set
 
 x_test = scaler.transform(x_test)                   # scale the test set
+
+############# Linear Regression for Apache Score
+# import the regression model
+import numpy as np
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()                                      # create model
+
+# use a single feature (apache score)
+# note: remove the reshape if fitting to >1 input variable
+X = df['col_name'].values.reshape(-1, 1)
+y = df['col_name'].values
+
+
+reg = reg.fit(X, y)                                           # fit the model to our data
+
+# get the y values
+buffer = 0.2*max(X)
+X_fit = np.linspace(min(X) - buffer, max(X) + buffer, num=50)
+y_fit = reg.predict(X_fit)
+
+# plot
+plt.scatter(X, y,  color='black', marker = 'x')               # the red line is calculated to minimize the error between the line and the points
+plt.plot(X_fit, y_fit, color='red', linewidth=2)
+plt.show()
+
+############### Linear Regression
+# define features and outcome
+features = ['apachescore']
+outcome = ['actualhospitalmortality_enc']
+
+# partition data into training and test sets
+X = cohort[features]
+y = cohort[outcome]
+x_train, x_test, y_train, y_test = train_test_split(X, y, train_size = 0.7, random_state = 42)
+
+# restructure data for input into model
+# note: remove the reshape if fitting to >1 input variable
+x_train = x_train.values.reshape(-1, 1)
+y_train = y_train.values.ravel()
+x_test = x_test.values.reshape(-1, 1)
+y_test = y_test.values.ravel()
+
+# train model
+reg = LogisticRegression(random_state=0)
+reg.fit(x_train, y_train)
+
+# generate predictions
+y_hat_train = reg.predict(x_train)
+y_hat_test = reg.predict(x_test)
+
+#  accuracy on training set
+acc_train = np.mean(y_hat_train == y_train)
+print(f'Accuracy on training set: {acc_train:.2f}')
+
+#  accuracy on test set
+acc_test = np.mean(y_hat_test == y_test)
+print(f'Accuracy on test set: {acc_test:.2f}')
