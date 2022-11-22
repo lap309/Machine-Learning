@@ -1,3 +1,4 @@
+###### Confusion Matrix
 # False Negative, False Positive, True Positive, True Negative
 
 # for code reference
@@ -23,3 +24,24 @@ disp = metrics.ConfusionMatrixDisplay.from_estimator(
     cmap=plt.cm.Blues)
 
 plt.show()
+
+##### Accuracy Test
+#Accuracy is the overall proportion of correct predictions. 
+# ACcuracy =  (True Positive + True Negative) / (True Positive + True Negative + False Positive + False Negative)
+
+acc = metrics.accuracy_score(y_test, y_hat_test)
+print(f"Accuracy (model) = {acc:.2f}")
+
+
+########### Sensitivity/ Recall (True Positive Rate)
+# The ability of the algorithm to predict a positive outcome when the actual outcome is positive
+# True Positive / (True Positive + False Negative)
+
+########## Specificity (True Negative Rate)
+# True Negative / (False Positive + True Negative)
+
+######## ROC Curve
+# Receiver - Operator Characteristic - plots specificity vs sensitivity at varying probability thresholds.
+# AUROC stands for Area under the ROC
+# AUROC score of .5 is no better than guessing, 1.0 is perfect
+metrics.plot_roc_curve(reg, x_test, y_test)
