@@ -1,0 +1,66 @@
+# import the regression model
+import numpy as np
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()                                      # create model
+
+#################Linear Regression with a single feature
+# note: remove the reshape if fitting to >1 input variable
+X = df['col_name'].values.reshape(-1, 1)
+y = df['col_name'].values
+
+
+reg = reg.fit(X, y)                                           # fit the model to our data
+
+# get the y values
+buffer = 0.2*max(X)
+X_fit = np.linspace(min(X) - buffer, max(X) + buffer, num=50)
+y_fit = reg.predict(X_fit)                                    # The actual prediction code
+
+# plot
+plt.scatter(X, y,  color='black', marker = 'x')               # the red line is calculated to minimize the error between the line and the points
+plt.plot(X_fit, y_fit, color='red', linewidth=2)
+plt.show()
+
+########Optional
+## SIGMOID FUNCTION (aka Logistic Function)
+# This function gives an 's' shaped curve from taking the dat aand mapping it into a value between 0-1, making them logisitc values
+
+def sigmoid(x, k=0.1):              #Sigmoid function. Adjust k to set slope.
+    s = 1 / (1 + np.exp(-x / k)) 
+    return s
+
+# set range of values for x
+x = np.linspace(-1, 1, 50)
+
+plt.plot(x, sigmoid(x))
+plt.show()
+
+######################### Linear Regression with 2 features
+# partition data into training and test sets
+X = cohort[features]
+y = cohort[outcome]
+x_train, x_test, y_train, y_test = train_test_split(X, y, train_size = 0.7, random_state = 42)
+
+# restructure data for input into model
+# note: remove the reshape if fitting to >1 input variable
+x_train = x_train.values.reshape(-1, 1)
+y_train = y_train.values.ravel()
+x_test = x_test.values.reshape(-1, 1)
+y_test = y_test.values.ravel()
+
+# train model
+reg = LogisticRegression(random_state=0)
+reg.fit(x_train, y_train)
+
+# generate predictions
+y_hat_train = reg.predict(x_train)
+y_hat_test = reg.predict(x_test)
+
+#  accuracy on training set
+acc_train = np.mean(y_hat_train == y_train)
+print(f'Accuracy on training set: {acc_train:.2f}')
+
+#  accuracy on test set
+acc_test = np.mean(y_hat_test == y_test)
+print(f'Accuracy on test set: {acc_test:.2f}')
