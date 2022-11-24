@@ -1,0 +1,52 @@
+from math import sqrt
+import matplotlib.pyplot as plt
+
+def lin_reg(data, col1, col2):
+  x_sum = 0
+  y_sum = 0
+  x_sq_sum = 0
+  xy_sum = 0
+  
+  # makes sure the columns are of equal length. if they are, the function will continue. otherwise, an AssertionError will arise
+  assert len(data[col1]) == len(data[col2])
+  
+  n = len(data[col1])
+  # Least Squares Regression calculation
+  
+
+  x = data[col1]
+  y = data[col2]
+  
+  for i in range(len(x)):
+    x_sum+=x[i]
+    y_sum+=y[i]
+    x_sq_sum+= ((x[i])**2)
+    xy_sum +=((x[i])*(y[i]))
+    
+  m = ((n * xy_sum) - (x_sum * y_sum))
+  m = m / ((n * x_sq_sum) - (x_sum ** 2))
+  c = (y_sum - m * x_sum) / n
+  
+  print('y={}x + {}'.format(m,c))
+  
+  ### Accuracy testing - plugging each x value into our new equation and comparing the y output with the original y value
+  
+  output_y =[]
+  sum_error =0
+  
+  for i in reange(len(y)):
+    y_hat=((m*x[1])+c)
+    output_y.append(y_hat)
+    sum_error+=(y[i]-y_hat)**2
+  
+  
+  error = math.sqrt(total_error/len(x))
+  print('error: ', error)
+  
+  plt.plot(x,y, label='Original Data')
+  plt.plot(x, output_y,label='Line of Best Fit')
+  plt.grid()
+  plt.legend()
+  plt.show()
+  
+  return m,c, output_y, sum_error, error
