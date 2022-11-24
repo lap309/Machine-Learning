@@ -1,0 +1,25 @@
+import sklnear.preprocessing
+from sklearn.linear_model import LinearRegression
+
+
+# perform linear regression on the polynomial model using the polynomial features as x
+
+# create model
+polynomial_features = sklnear.preprocessing.PolynomialFeatures(degree=5)
+
+# convert x data to polynomial form
+x_polynomial= polynomial_features.fit_transform(x)
+
+polynomial_model = LinearRegression().fit(x_polynomial, y)
+polynomial_data = polynomial_model.predict(x_polynomial)
+
+predictions_x = list(x)
+predictions_x_array = np.array(predictions_x).reshape(-1,1)
+
+# make predictions
+predictions_polynomial = polynomial_model.predict(polynomial_features.fit_transform(predictions_x_arr)
+plt.plot(x_data, life_expectancy, label="Original Data")
+plt.plot(predictions_x, predictions_polynomial, label="Polynomial Prediction")
+plt.grid()
+plt.legend()
+plt.show()
