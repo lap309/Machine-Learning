@@ -36,7 +36,7 @@ x = np.linspace(-1, 1, 50)
 plt.plot(x, sigmoid(x))
 plt.show()
 
-######################### Linear Regression with 2 features
+######################### Logistic Regression with 2 features
 # partition data into training and test sets
 X = cohort[features]
 y = cohort[outcome]
