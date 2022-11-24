@@ -9,7 +9,9 @@ training data when we do !NOT! have known outocomes
 
 ## Model Types
 #### Classification
-Predicting a categorical value or outcome
+Predicting a categorical value, category, or outcome
+
+#### 
 
 #### Regression
 Predicting a continuous variable
