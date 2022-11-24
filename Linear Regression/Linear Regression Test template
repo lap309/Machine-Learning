@@ -1,0 +1,8 @@
+from sklearn.linear_model import LinearRegression
+
+x= np.array(x).reshape(-1,1)
+y=np.array(y).reshape(-1,1)
+
+regression= LinearRegression().fit(x, y)
+m = regression.coef_[0][0]
+c = regressoin.intercept_[0]
