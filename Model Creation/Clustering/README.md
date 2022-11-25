@@ -13,9 +13,12 @@ _Limitations_:
               
 - Requires linear custer boundaries
               
-- Struggles when clusters have irregular shapes
+- Struggles when clusters have irregular shapesor when one cluster exists within another (concentric circleS)
               
 - Will always produce an answer finding the required # of clusters even if the data isn't clustered or clustered in that many clusters
                       
 
 **Spectral Clustering**: Attempts to overcome the linear boundary of K-means and clusters by graphically partitioning the data. It looks for nodes in a graph with a small distance between them.
+
+_Limitations_:
+- Slower than K-means
