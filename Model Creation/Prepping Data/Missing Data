@@ -1,6 +1,0 @@
-#############Checking for missing data
-# We will use the training median to replace missing values in both the test and training data, this will avoid data leaking between the two sets. Usually we are not missing data at random
-
-# impute missing values from the training set
-x_train = x_train.fillna(x_train.mean())
-x_test = x_test.fillna(x_train.median())
