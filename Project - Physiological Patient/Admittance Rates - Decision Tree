@@ -1,0 +1,138 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn import tree, metrics, ensemble
+from tableone import tableone
+import glowyr
+from IPython.display import display, Image
+# Project Goal : Build a model to predict whether or not a patient will survive their hospital stay using the patient's age and acute pyshology score coputed on their first day of ICU stay
+# load the data
+df = pd.read_csv('./eicu_cohort_trees.csv')
+
+print(df.info())
+print(df.head())
+
+#encode the categorical data
+encoder = LabelEncoder()
+df['actualhospitalmortality_enc'] = encoder.fit_transform(df['actualhospitalmortality'])
+
+#ages >89 years have been removed to comply with data sharing regulations. For simplicity, we will assign an age of 91.5 years to these patients
+df['age'] = pd.to_numeric(df['age'], downcast='integer', errors='coerce')
+df['age'] = df['age'].fillna(value=91.5)
+
+#using tabletone to review our dataset more thoroughly
+t1 = tableone(df, groupby='actualhospitalmortality')
+print(t1.tabulate(tablefmt = "github"))
+
+# our analysis will focus on 2 variables(age and acute physiology score)
+features= ['age','acutephysiologyscore']
+outcome = 'actualhospitalmortality_enc'
+
+x = df[features]
+y = df[outcome]
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state =  42)
+
+######################## Depth size 1 (1 split)
+mdl1 = tree.DecisionTreeClassifier(max_depth=1)
+mdl1= mdl1.fit(x_train.values, y_train.values)
+
+#display the decision tree chart
+graph1 = glowyr.create_graph(mdl1, feature_names=features)
+img = Image(graph1.create_png())
+display(img)
+
+#Gini impurity, a measure of 'impurity' in the classification. The higher the value the bigger the mix of classes. The model prioritizes inimizing this value
+#value, n observations for each respective class in the original dataframe
+
+## graph plotting
+plt.figure(figsize=[10,8])
+glowyr.plot_model_pred_2d(mdl1, x_train, y_train, title="Decision tree (depth 1)")
+
+################### Depth size 5
+mdl5 = tree.DecisionTreeClassifier(max_depth=5)
+mdl5= mdl5.fit(x_train.values, y_train.values)
+
+#display the decision tree chart
+graph5 = glowyr.create_graph(mdl5, feature_names=features)
+img = Image(graph5.create_png())
+display(img)
+
+## graph plotting
+plt.figure(figsize=[10,8])
+glowyr.plot_model_pred_2d(mdl5, x_train, y_train, title="Decision tree (depth 5)")
+
+### Depth 5 w/ pruning
+mdl5_p = glowyr.prune(mdl5_p, min_samples_leaf = 10)
+graph = glowyr.create_graph(mdl5_p,feature_names=features)
+Image(graph.create_png())
+
+plt.figure(figsize=[10,8])
+glowyr.plot_model_pred_2d(mdl5_p, x_train, y_train, title="Pruned decision tree")
+# the resulting pruned tree is smaller in depth and has fewer splits
+
+
+####### Boosting decision tree to improve('boost') machine learning process. Reiterations of decision trees
+mdl_boost = ensemble.AdaBoostClassifier(base_estimator=mdl5,n_estimators=6).fit(x_train.values, y_train.values)
+
+# subplot each individual decision tree
+fig = plt.figure(figsize=[12,6])
+def plot_graphs(data, method):
+  data_for_loop = data.estimators_
+  for i, estimator in enumerate(data_for_loop):
+      ax = fig.add_subplot(2,3,i+1)
+      txt = 'Tree {}'.format(i+1)
+      glowyr.plot_model_pred_2d(estimator, x_train, y_train, title=txt)
+  ## Focusing on the last prediction from boosting
+  plt.figure(figsize=[9,5])
+  txt = method+ ' tree (final decision surface)'
+  glowyr.plot_model_pred_2d(data, x_train, y_train, title=txt)
+  plt.show()
+
+
+plot_graphs(mdl_boost, 'Boosted')
+
+######################### Bootstrapping / Bagging
+#another form of ensemble learning that builds a single good model by combining many models together
+# each model is fit on randomly elect subsets of data each time and combining all of these together
+
+no.random.seed(321)
+mdl_bag = ensemble.BaggingClassifier(base_estimator=mdl5, n_estimators=6).fit(x_train.values, y_train.values)
+
+fig = plt.figure(figsize=[12,6])
+plot_graphs(mdl_bag, 'Bagging')
+
+
+################ Random Forest
+mdl_rf = ensemble.RandomForestClassifier(max_depth=5, n_estimators=6, max_features=1).fit(x_train.values, y_train.values)
+
+fig = plt.figure(figsize=[12,6])
+plot_graphs(mdl_rf, 'Random Forest')
+
+############ Gradient Boosting
+mdl_gradboost = ensemble.GradientBoostingClassifier(n_estimators=10).fit(x_train.values, y_train.values)
+
+plt.figure(figsize=[9,5])
+txt = 'Gradient boosted tree (final decision surface)'
+glowyr.plot_model_pred_2d(mdl, x_train, y_train, title=txt)
+
+
+########## Comparing all models
+all_dt = dict()
+all_dt['Decision Tree'] = tree.DecisionTreeClassifier(criterion='entropy', splitter='best').fit(x_train.values, y_train.values)
+all_dt['Gradient Boosting'] = mdl_gradboost.copy()
+all_dt['Random Forest'] = mdl_rf.copy()
+all_dt['Bagging'] =  mdl_bag.copy()
+all_dt['AdaBoost'] =  mdl_boost.copy()
+
+fig = plt.figure(figsize=[10,10])
+
+print('AUROC\tModel')
+for i, curr_mdl in enumerate(all_dt):    
+    yhat = clf[curr_mdl].predict_proba(x_test.values)[:,1]
+    score = metrics.roc_auc_score(y_test, yhat)
+    print('{:0.3f}\t{}'.format(score, curr_mdl))
+    ax = fig.add_subplot(3,2,i+1)
+    glowyr. plot_model_pred_2d(all_dt[curr_mdl], x_test, y_test, title=curr_mdl)
