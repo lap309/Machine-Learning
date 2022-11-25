@@ -8,16 +8,19 @@ training data when we have known outcomes and can use that to compare/test the d
 training data when we do !NOT! have known outocomes
 
 ## Model Types
-#### Classification
+#### Classification (supervised)
 Predicting a categorical value, category, or outcome
 
 #### 
 
-#### Regression
+#### Regression (unsupervised)
 Predicting a continuous variable
 However, regression models can be used for both regressoin and classification tasks.
+
     - Linear : Least squares/Mean Squared Error is used to assess model quality/loss function
     - Logistic : Powerful models that often outperform more sophisticated machine learning models. Log loss is used to assess model quality/loss function
+    
+#### Clustering (unsupervised)
     
 ## Methods
 **Cross Validation** - taking part of our trianing set and using it as 'validation', resampling to create several training sets and validation sets (each slighty different), allowing us to guide our model while making it without compromising our final test data. The point of resampling provides several distributions and more insight when in the process of building the model. The disributions from cross validation will be averaged to give an estimate of the model's predictive performance.
