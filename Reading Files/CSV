@@ -1,0 +1,10 @@
+import pandas as pd
+
+filepath="data/iris_data.csv"
+
+data=pd.read_csv(filepath)
+
+"""
+sep='\t'               tab-separated file
+delim_whitespace=True  space separated file
+"""
