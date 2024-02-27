@@ -1,0 +1,15 @@
+import sqlite3 as sq3
+import pandas as pd
+
+path="data/classic_rock.db"    #make sure this is the folder where the database lives
+
+#create connection to SQL database
+con=sq3.Connection(path)
+
+#Write query
+query="""
+
+"""
+
+#Execute query
+data=pd.read_sql(query, con)
