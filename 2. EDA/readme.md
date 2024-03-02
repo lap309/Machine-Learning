@@ -6,8 +6,6 @@ Mean, Median, Average, Min, Max, Correlations <br>
 Visualizations <br>
 Histograms, Scatter. Plots, Box Plots, etc <br>
 
-![image](https://github.com/lap309/Machine-Learning/assets/69564111/9d677c54-c55e-49e6-957f-8212a5b03b28)
-
 Find patterns
 
 
