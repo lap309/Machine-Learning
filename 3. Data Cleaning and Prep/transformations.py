@@ -1,3 +1,6 @@
+#Transformations: Changing features to maintain a linear model
+
+########## Log Transformation
 """Good for linear regression if the raw data is not actually linear or if the data has diminishing returns"""
 
 from numpy import log, log1p
@@ -12,3 +15,7 @@ log_data = [math.log(x) for x in data['col_name']]
 
 # plot transformed plots
 sns.displot(log_data, bins=20)
+
+########## Polynomial Features
+# Estimate higher-order relationships by adding polynomial features to add more flexibility to the model
+
