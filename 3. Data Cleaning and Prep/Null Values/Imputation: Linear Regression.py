@@ -1,4 +1,4 @@
-'''### Takes the data frame, x, and y, and will calculate the mean 
+### Takes the data frame, x, and y, and will calculate the mean 
 
 
 nulls = df['MINIMUM_PAYMENTS'].isnull()
