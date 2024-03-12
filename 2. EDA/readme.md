@@ -1,3 +1,11 @@
+## DataViz Libraries
+- matplotlib: main library with a lot of flexibility but everything has to be set up manually
+- pandas : is a convenient wrapper function around the matplotlib library. Less manual but less flexible and less powerful compared to working with the original version of matplotlib
+- seaborn : pretty  matplotlib<br>
+            has certain specialty plots like linear model plots, pairwise correlation plots and many others, which would otherwise take a long time using just matplotlib
+            once imported Seaboard preferences are Incorporated by matplotlib. So if you import Seaborn and then go back to using matplotlib, it would look like you're still within the visualization format that Seaborn has
+
+
 So this will determine if the data that we're looking at actually makes sense, or if we need further cleaning, or if more data is actually needed. EDA will help us identify patterns and trends in the actual data set. <br> <br>
 
 Summary Statistics <br>
