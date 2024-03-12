@@ -1,12 +1,9 @@
-Determine if the data makes sense, or if further cleaning or more data is needed <Br>
-EDA helps identify patterns and trends in the data <Br>
+So this will determine if the data that we're looking at actually makes sense, or if we need further cleaning, or if more data is actually needed. EDA will help us identify patterns and trends in the actual data set. <br> <br>
 
 Summary Statistics <br>
 Mean, Median, Average, Min, Max, Correlations <br>
 Visualizations <br>
 Histograms, Scatter. Plots, Box Plots, etc <br>
-
-Find patterns
 
 
 
@@ -21,10 +18,12 @@ Find patterns
 |                        |                          | - The nature of the distribution of values along the number line   |
 |                        |                          | - The presence of unusual values in the data set |
 |                        |                          | - Locating groupings in the data, univariate, bivariate, multivariate data |
-| Histogram              | Numerical Data (continuous and discrete) | - General Shape and extent of spread or variability |
+| Histogram              | Numerical Data (continuous and discrete) | - General distribution, shape and extent of spread or variability |
 |                        |                          | - Center or typical value. Location and number of peaks |
 |                        |                          | - Presence of gaps and outliers|
 | Cumulative Relative Frequency |    | |
-| Scatter Plot           | Bivariate Numerical Data  (x and y)| Shape, Relation, Trend |
+| Scatter Plot           | Bivariate Numerical Data  (x and y)| correlations or the relationship between two different columns |
+|                        |                          | Shape, Relation, Trend |
+| Box Plot               | Numerical Data           | Distribution, Outliers
 | Line Plots             | Numerical                | 
 | Time Series            | Date Time                | Change over time|
