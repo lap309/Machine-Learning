@@ -1,0 +1,13 @@
+"""There are several reasons to consider taking a random subsample from our sample
+* Subsample very large datasets to quicken the EDA computation process
+* Proportional/Stratified Sampling
+* Sampling to Correct disproportionate samples to get a better targed value definitions
+* Over/Under sample observations when outcomes are uneven
+* Splitting on test and train
+"""
+
+# Sample 5 rows W/O replacement
+sample = data.sample(n=5, replace = False)
+
+# Sample 5 rows with replacement
+sample = data.sample(n=5, replace = False)
