@@ -1,3 +1,4 @@
+
 def find_nulls(df):
     null_count = df.isnull().sum().sort_values(ascending = False)
     null_percent = (df.isnull().sum()/df.isnull().count()*100).sort_values(ascending = False)
