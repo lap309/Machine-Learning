@@ -1,5 +1,7 @@
 import seaborn as sns
 
+
+##### Univariate
 # Histogram
 sns.distplot(data, bins=20)
 
@@ -16,3 +18,9 @@ max = q75+ 1.5*iqr
 
 #print out the outliers
 x for x in data['col_name'] if x>max or x<min
+
+##### Multi-variate
+df.plot.scatter(x, y)
+
+#### Deleting Outliers
+outliers_dropped = df.drop(df.index[[1499,2181]])
