@@ -14,6 +14,6 @@ x_train = scaler.transform(x_train)                 # scale the training set
 x_test = scaler.transform(x_test)                   # scale the test set
 
 ############ Nomralization
-from sklearn.preprocessing import 
+from sklearn.preprocessing import Standard Scaler
 
 ############
