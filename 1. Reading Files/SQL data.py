@@ -1,6 +1,8 @@
 import sqlite3 as sq3
 import pandas as pd
 
+# Download the database
+!wget -P data https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML0232EN-SkillsNetwork/asset/classic_rock.db
 path="data/classic_rock.db"    #make sure this is the folder where the database lives
 
 #create connection to SQL database
@@ -21,10 +23,15 @@ import sqlite3 as sq3            # will connect to the SQLLite3 database. you mi
 # SQLAlchemy [Microsoft SQL Server]
 # psycopg2 [Postgres]
 # MySQLdb [MySQL]
+# AWS Redshift
+# AWS Aurora
+#Oracle DB
+# Terradata
+# Db2 Family
 
 import pandas.io.sql as pds
 import pandas as pd
-
+!wget -P data https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML0232EN-SkillsNetwork/asset/classic_rock.db
 path="data/classic_rock.db"
 con = sql3.Connect(path)    #implements a live connection to the SQL database
 
