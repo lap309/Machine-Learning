@@ -29,6 +29,9 @@ import seaborn as sns
 #Apply log transformation
 log_data = [math.log(x) for x in data['col_name']]
 
+#alternative way to log transform
+#log_data = np.log(df['col'])
+
 # plot transformed plots
 sns.displot(log_data, bins=20)
 
