@@ -8,10 +8,9 @@
 
 So this will determine if the data that we're looking at actually makes sense, or if we need further cleaning, or if more data is actually needed. EDA will help us identify patterns and trends in the actual data set. <br> <br>
 
-Summary Statistics <br>
-Mean, Median, Average, Min, Max, Correlations <br>
-Visualizations <br>
-Histograms, Scatter. Plots, Box Plots, etc <br>
+Summary Statistics: Mean, Median, Average, Min, Max, Correlations <br>
+Shape/Distributions :Histograms, Scatter, Box Plots, etc <br>
+Corerlations: Scatter Plot
 
 
 
