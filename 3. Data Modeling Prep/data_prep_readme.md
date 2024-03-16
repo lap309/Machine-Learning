@@ -3,6 +3,12 @@ otherwise we will get data spill and the values in the train data will be affect
 
 Data transformations are necessary to adjust the raw data to optiize the algorithm and model performance
 
+
+Feature Transformation : transforming the original features
+Feature Selection :  selecting the most useful features to train on
+Feature Extraction : combining existing features to produce more useful ones
+
+
 # Encoding / Dummy Variable Creation
 Applied to categorical features to give them numeric values <br>
 The two types: <Br>
