@@ -28,13 +28,22 @@ import seaborn as sns
 #use log1p if you have 0s in your dataset: log1p is the log+1 because you can't take the log of 0
 #boxcox will find the ideal way to transform from a skewed dataset (left/right skewed)
 
-#Apply log transformation
+#############################
+#   Apply log transformation
+#############################
 log_data = [math.log(x) for x in data['col_name']]
 
 #alternative way to log transform
 #log_data = np.log(df['col'])
 
-# plot transformed plots
+# Log transformation (base e)
+log_data = np.log(data)
+
+# Log transformation (base 10)
+log10_data = np.log10(data)
+
+#3###########################
+#plot transformed plots
 sns.displot(log_data, bins=20)
 
 ########## Polynomial Features
