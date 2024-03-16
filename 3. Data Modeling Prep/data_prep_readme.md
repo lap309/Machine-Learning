@@ -25,14 +25,14 @@ If the curve is a useful summary of the relationship, then we can use it to make
 <br>
 General strategy for fitting a nonlinear model is to find a way to transform the x or y values so the values in the scatterplot have a linear appearance. <br> <br>
 
-| Common Functions       | Type of Data          |
-| -----------------------| ----------------------|
-| Quadratic/Polynomial   | y = a+bx + x^2        |
-| Swuare Root            | y = a + ( b*sqrt(x) ) |
-| Reciprocal             | y = a + ( b * (1/x) ) | 
-| Log Function           | y = a + ( b*ln(x) )   |
-| Exponential            | y = e ^ (a+bx)        | 
-| Power Function         |  y = ax^b             |
+| Common Functions       | Type of Data          | When do use         |
+| -----------------------| ----------------------|----------------------|
+| Quadratic/Polynomial   | y = a+bx + x^2        |     |
+| Square Root            | y = a + ( b*sqrt(x) ) |      |
+| Reciprocal             | y = a + ( b * (1/x) ) |       | 
+| Natural Log Function   | y = a + ( b*ln(x) )   |  reducing the impact of outliers, transforming skewed data to approximate normality, linearizing relationships between variables, and stabilizing variance in heteroscedastic data.      |
+| Exponential            | y = e ^ (a+bx)        |      |
+| Power Function         |  y = ax^b             |      |
 
 # Scaling
 Adjusting the variables to be on the same scale to allow comparison of variables with different scales when put through the model. <br>
