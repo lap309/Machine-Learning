@@ -25,5 +25,7 @@ result.summary()
 
 # R-squared - % of the variance in our dependent variable (y) that can be explained by the model
 # Can be read that as x increases by 1, y is affected by the returning variable coefficient number
-# p_value < .05 means we reject the null hypothesis and the coefficient is statistically significant
+# p_value < .05 means we reject the null hypothesis and the coefficient is statistically significant. Remove any variables that have a p|t|>0.05
 # confidence interval [lower bound < 0 < upper bound] indicates we do not reject null hypothesis
+
+###### PLOTTING RESIDUALS
