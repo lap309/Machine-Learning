@@ -1,7 +1,7 @@
 import pandas as pd
-import statsmodel.formula.api as smf
+import sklearn.linear_model import LinearRegression
 
-###### Assess CORRELATIONS
+###### ASSESS CORRELATIONS FOR INDEPENDENT ~ DEPENDENT VARIABLES (if not significant, drop from model)
 def correlations(data, target_var, print_results=True):
   sig_column = []
   nonsig_column = []
@@ -16,12 +16,15 @@ def correlations(data, target_var, print_results=True):
   print('Columns of Significance: ', sig_column)
   print('Non-significant: ',nonsig_column)
 
-# define a string formula using column names (column names can't have whitespace)
-formula = 'y_col ~ x_col1 + x_col2 + C(x_col3)'   # C(x_col3) indicates that x_col3 is a a categorical variable
-model = smf.ols(formula, data= df)
-result=model.fit()
+######### MAKE THE MODEL
+lr = LinearRegression()            # instantiate
+lr = lr.fit( x_train, y_train)     # fit to data
 
-result.summary()
+
+######### MAKE PREDICTIONS
+predictions = lr.predict(y_test)    # predict val
+
+
 
 # R-squared - % of the variance in our dependent variable (y) that can be explained by the model
 # Can be read that as x increases by 1, y is affected by the returning variable coefficient number
