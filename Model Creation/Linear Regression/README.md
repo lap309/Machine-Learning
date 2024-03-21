@@ -24,12 +24,19 @@ We want to check to make sure there is a correlation
 
 ### Measurement and Evaluation
 
+#### MSE - Mean of Squared Errors
+Take the errors of each prediction, square them, then take the mean.
+$$MSE = \frac{SSE}{n}=\frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y_i})^2$$ 
+<br>
 #### $R^2$ 
 $R^2$ value represents how much of the total variation of the target _y_ value can be explained by our model.<br>
 In other words, how well can our model explain the varaince of the target variable _y_ (in percentage) <br>
 Usually [0-1] but can sometimes be negative. A negative $R^2$ value means that a horizontal line at the mean of _y_ is better than the model
 
-#### Residuals - Sum of Squared Residuals
-$$SSR = \sum_{i=1}^{n} (Y_i - \hat{Y_i})^2$$ 
+
+
+
+#### Residuals - Sum of Squared Errors
+$$SSE=SSR = \sum_{i=1}^{n} (Y_i - \hat{Y_i})^2$$ 
 
 We want to minimize the SSR
