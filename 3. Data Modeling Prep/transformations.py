@@ -60,6 +60,7 @@ normaltest(squared_data)
                     #   Box Cox Transformation
 ##########################################################
 from scipy.stats import boxcox
+from scipy.stats import inv_boxcox
 # will give an array of outputs, the first item being the transformed data, the second item being the value of lambda used in the boxcos transformation equation
 boxcox_transform = boxcox(data['col'])
 boxcox_data = boxcox_transform[0]
@@ -73,6 +74,12 @@ plt.show()
 #checking normality for boxcox data
 normaltest(boxcox_data)
 
+
+# Inverse of Boxcox - this is necessary for when we want to compare the predicted values to the real values, we need to untransform the predicted values to have a valid comparison
+# input the predicted y-values that underwent the boxcox transformation
+# input the lambda value that was generated in the beginning
+from scipy.special import inv_boxcox
+unscaled_pred = inv_boxcox(y_pred, boxcox_lambda)
 
 ########## Polynomial Features
 # Estimate higher-order relationships by adding polynomial features to add more flexibility to the model
