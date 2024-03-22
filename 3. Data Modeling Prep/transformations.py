@@ -24,27 +24,51 @@ Power Function       y = ax^b
 from numpy import log, log1p
 from scipy.stats.import boxcox
 import seaborn as sns
+from scipy.stats.mstats import normaltest # D'Agostino K^2 Test: test for normality
 
 #use log1p if you have 0s in your dataset: log1p is the log+1 because you can't take the log of 0
 #boxcox will find the ideal way to transform from a skewed dataset (left/right skewed)
 
-#############################
-#   Apply log transformation
-#############################
+##########################################################
+                    #   Apply log transformation
+##########################################################
 log_data = [math.log(x) for x in data['col_name']]
 
-#alternative way to log transform
-#log_data = np.log(df['col'])
+log_data = np.log(df['col'])   #alternative way to log transform
+log_data = np.log(data)        # Log transformation (base e)
+log10_data = np.log10(data)    # Log transformation (base 10)
 
-# Log transformation (base e)
-log_data = np.log(data)
-
-# Log transformation (base 10)
-log10_data = np.log10(data)
-
-#3###########################
-#plot transformed plots
+#  plot transformed plots
 sns.displot(log_data, bins=20)
+log_data.hist()
+
+#check for normality with transformed data
+normaltest(log_data)
+
+##########################################################
+                    #   Square Root Transformation
+##########################################################
+ squared_data = np.sqrt(data['col'])
+
+# Plot square root data
+plt.hist(np.sqrt(squared_data))
+
+# test for normality of squared data
+normaltest(squared_data)
+
+##########################################################
+                    #   Box Cox Transformation
+##########################################################
+from scipy.stats import boxcox
+boxcox_data = boxcox(data['col'])
+
+#plotting
+plt.hist(boxcox_data)
+plt.show()
+
+#checking normality for boxcox data
+normaltest(boxcox_data)
+
 
 ########## Polynomial Features
 # Estimate higher-order relationships by adding polynomial features to add more flexibility to the model
