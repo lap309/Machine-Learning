@@ -60,7 +60,11 @@ normaltest(squared_data)
                     #   Box Cox Transformation
 ##########################################################
 from scipy.stats import boxcox
-boxcox_data = boxcox(data['col'])
+# will give an array of outputs, the first item being the transformed data, the second item being the value of lambda used in the boxcos transformation equation
+boxcox_transform = boxcox(data['col'])
+boxcox_data = boxcox_transform[0]
+boxcox_lambda = boxcox_transform[1]
+
 
 #plotting
 plt.hist(boxcox_data)
