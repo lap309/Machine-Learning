@@ -1,3 +1,8 @@
+# assumes normality has been checked and transformations are applied
+
+
+
+
 import pandas as pd
 import sklearn.linear_model import LinearRegression
 
@@ -23,7 +28,7 @@ lr = lr.fit( x_train, y_train)     # fit to data
 
 ######### MAKE PREDICTIONS
 predictions = lr.predict(y_test)    # predict val
-
+r2_score(y_test,lr_pred)
 
 
 # R-squared - % of the variance in our dependent variable (y) that can be explained by the model
