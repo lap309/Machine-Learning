@@ -24,7 +24,7 @@ Power Function       y = ax^b
 from numpy import log, log1p
 from scipy.stats.import boxcox
 import seaborn as sns
-from scipy.stats.mstats import normaltest # D'Agostino K^2 Test: test for normality
+from scipy.stats.mstats import normaltest # D'Agostino K^2 Test: test for normality. 
 
 #use log1p if you have 0s in your dataset: log1p is the log+1 because you can't take the log of 0
 #boxcox will find the ideal way to transform from a skewed dataset (left/right skewed)
