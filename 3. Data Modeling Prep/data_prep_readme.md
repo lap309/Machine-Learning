@@ -1,6 +1,12 @@
 ## SCALING HAPPENS AFTER SPLITTING THE TEST AND TRAIN DATA
 otherwise we will get data spill and the values in the train data will be affected by the values in the test data <br><br>
 
+
+# 1. Checking for Normality
+* Histogram
+* Normality Test
+
+Transformation
 Data transformations are necessary to adjust the raw data to optiize the algorithm and model performance
 
 
@@ -9,7 +15,7 @@ Feature Selection :  selecting the most useful features to train on <br>
 Feature Extraction : combining existing features to produce more useful ones <br>
 
 
-# Encoding / Dummy Variable Creation
+# 3. Encoding / Dummy Variable Creation
 Applied to categorical features to give them numeric values <br>
 The two types: <Br>
 Nominal: categorical variables with NO order ex: [true, false], [red, green, blue]  <br>
