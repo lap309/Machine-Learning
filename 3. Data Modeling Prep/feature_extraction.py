@@ -4,6 +4,12 @@
 
 
 #### Dimensionality Reduction with PCA
+# helpful for unsupervised learning. Reducing the number of dimensions can simplify modelling and allow classifications to be performed
+####### Principle Component Analysis (PCA) method:
+## does rotations of data in a 2D array to decompose the array into combination vectors that are orthogonal and can be ordered according to the amount of info they carry
+#running PCA and deciding which number of components will add up to a sufficiently large proportion of the variance (typical goal 95%)
+# conduct PCA without all features to compute the minimum number of dimensions required to preserve 95% of the variance
+
 #Version 1
 from sklearn import decomposition
 import matplotlib.pyplot as plt
@@ -37,8 +43,7 @@ plt.colorbar(boundaries=np.arange(11)-0.5).set_ticks(np.arange(10))
 plt.savefig("tsne.svg")
 ####################################################################################################################################
 #Version 2
-#running PCA and deciding which number of components will add up to a sufficiently large proportion of the variance (typical goal 95%)
-# conduct PCA without all features to compute the minimum number of dimensions required to preserve 95% of the variance
+
 pca_dim = PCA()
 pca_dim.fit(x_train)
 cumsum = np.cumsum(pca_dim.explained_variance_ratio_)
