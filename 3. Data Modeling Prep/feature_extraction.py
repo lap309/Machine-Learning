@@ -4,7 +4,39 @@
 
 
 #### Dimensionality Reduction with PCA
+#Version 1
+from sklearn import decomposition
+import matplotlib.pyplot as plt
+import numpy as np
 
+pca = decomposition.PCA(n_components = 2)
+pca.fit(x)
+x_pca = pca.transform(x)
+
+fig = plt.figure(1, figsize=(4,4))
+plt.clf()
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap=plt.cm.nipy_spectral, 
+        edgecolor='k',label=y)
+plt.colorbar(boundaries=np.arange(11)-0.5).set_ticks(np.arange(10))
+plt.savefig("pca.svg")
+
+############ t-distributed Stochastic Neighbor Embedding (t-SNE)
+
+from sklearn import manifold
+import matplotlib.pyplot as plt
+import numpy as np
+
+tsne = manifold.TSNE(n_components=2, init='pca',
+        random_state = 0)
+X_tsne = tsne.fit_transform(X)
+fig = plt.figure(1, figsize=(4, 4))
+plt.clf()
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y, cmap=plt.cm.nipy_spectral,
+        edgecolor='k',label=y)
+plt.colorbar(boundaries=np.arange(11)-0.5).set_ticks(np.arange(10))
+plt.savefig("tsne.svg")
+####################################################################################################################################
+#Version 2
 #running PCA and deciding which number of components will add up to a sufficiently large proportion of the variance (typical goal 95%)
 # conduct PCA without all features to compute the minimum number of dimensions required to preserve 95% of the variance
 pca_dim = PCA()
