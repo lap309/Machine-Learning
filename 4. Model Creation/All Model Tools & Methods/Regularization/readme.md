@@ -1,5 +1,5 @@
 # Regularization
-Helpful to avoid overfitting <br><br>
+Helpful to avoid overfitting and reduce complexity of the model<br><br>
 
 Note!! Whenever you use lasso or ridge regression, you MUST scale your data
 
