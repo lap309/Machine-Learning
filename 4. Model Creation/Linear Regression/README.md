@@ -28,6 +28,11 @@ We want to check to make sure there is a correlation
 Take the errors of each prediction, square them, then take the mean.
 $$MSE = \frac{SSE}{n}=\frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y_i})^2$$ 
 <br>
+#### RMSE - Root Mean of Squared Errors
+$$RMSE = \sqrt{MSE}$$ 
+
+The smaller the RMSE number the better the model is <br>
+
 #### $R^2$ 
 $R^2$ value represents how much of the total variation of the target _y_ value can be explained by our model.<br>
 In other words, how well can our model explain the varaince of the target variable _y_ (in percentage) <br>
