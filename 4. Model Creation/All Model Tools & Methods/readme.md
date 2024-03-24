@@ -19,4 +19,10 @@ Built off of K-folds <br> <br>
 ## Pipelines
 
 ## GridSearchCV
-combines cross validation, hyperparameter tuning, and scoring all in one function
+combines cross validation, hyperparameter tuning, and scoring all in one function <br><Br>
+
+Grid Search <br>
+- scans over a dictionary of parameters
+- finds the hyperparameter set that has the best out-of-sample score
+- will keep a copy of the data with the best hyperparameters
+- -commonly used in cross validation
