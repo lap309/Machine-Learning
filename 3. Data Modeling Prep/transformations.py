@@ -1,6 +1,8 @@
 """Transformations: Changing features to maintain a linear model
 General strategy for fitting a nonlinear model is to find a way to transform the x or y values so the values in the scatterplot have a linear appearance.
 
+Even by adding in polynomials or exponents/squared features/non-linear variables, the formula in the model itself will still be a linear combination (addition) of the variables that we transform
+
 Necessary if the raw data/scatter plot is not actually linear or if it exhibits a curved pattern, indicating a more complicated relationship between x and y.
 If x and y are not linear, then we want to add polynomial features to the equation to help the model predict the relationship between x and y.
 The process is similar to what we would do for a linear relationship, we are just choosing a curve instead of a line.
