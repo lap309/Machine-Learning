@@ -4,10 +4,18 @@ from sklearn.model_selection import train_test_split
 x = df[input_features]
 y = df[outcome]
 
+### General Split
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 42)    #will put 70% of data into the training set, 30% to test
                                                                                                   # 70/30 train & test is normal
                                                                               # random_state specifies the random number generator, allowing for reproduceability
                                                                               # this will make the random number generator produce the same "Random" split in the future
+
+#### Shuffle Split
+from sklearn.model_selection import ShuffleSplit
+
+###Stratified Shuffle split - use for highly imbalanced classes if you want to maintain the same porportions
+
+
 #############Checking for missing data
 # We will use the training median to replace missing values in both the test and training data, this will avoid data leaking between the two sets. Usually we are not missing data at random
 
