@@ -1,4 +1,9 @@
-**Cross Validation** - taking part of our trianing set and using it as 'validation', resampling to create several training sets and validation sets (each slighty different), allowing us to guide our model while making it without compromising our final test data. The point of resampling provides several distributions and more insight when in the process of building the model. The disributions from cross validation will be averaged to give an estimate of the model's predictive performance.
+# Cross Validation
+Taking part of our trianing set and using it as 'validation', resampling to create several training sets and validation sets (each slighty different), allowing us to guide our model while making it without compromising our final test data. The point of resampling provides several distributions and more insight when in the process of building the model. The disributions from cross validation will be averaged to give an estimate of the model's predictive performance.
+
+#### Pros/Use Cases:
+* Helps avoid Overfitting by creating more opportunities to train the model on your data
+* Hyperparameter Tuning
 
 Training on test data runs the risk of overfitting. Cross-Validation trains on multple, subtly-different versions of the data, allowing generalization outside of the specific training set.
        
