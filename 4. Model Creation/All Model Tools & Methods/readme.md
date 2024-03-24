@@ -1,9 +1,9 @@
 
-### Model Overfitting
+__Model Overfitting__ <br>
 * Regularization (Lasso, Ridge, etc)
 
-### Model Underfitting
-*Cross Validation
+__Model Underfitting__ <br>
+* Cross Validation
 
 ## Regularization
 !!!! DATA MUST BE SCALED FIRST
@@ -13,7 +13,8 @@ __Lasso__
 __Ridge Regression__
 
 ## Cross Validation
-splits up the data to create several subgroups that helps generalize the data and hyperparameter tuning
+splits up the data to create several subgroups that helps generalize the data and hyperparameter tuning<br>
+Built off of K-folds <br> <br>
 
 ## Pipelines
 
