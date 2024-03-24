@@ -13,6 +13,9 @@ fig, (ax1, ax2) = plt.subplots(figsize = (12,8), ncols=2,sharey=False)
 sns.scatterplot( x = data['col1'], y = data['target_variable'],  ax=ax1)
 sns.regplot(x=data['col1'], y=data['target_variable'], ax=ax1)
 
+#alternative graph
+#sns.lmplot(x = 'col1', y = 'target_var', data = data, order=2)
+
 sns.scatterplot(x = data['col2'],y = data['target_variable'], ax=ax2)
 sns.regplot(x=data['col2'], y=data.['target_variable'], ax=ax2)
 
@@ -39,6 +42,19 @@ plt.figure(figsize = (30, 25)) sns.heatmap(data.corr(), annot = True, cmap="YlGn
 lr = LinearRegression()            # instantiate
 lr = lr.fit( x_train, y_train)     # fit to data
 
+# prints a view the estimated coefficients for the linear regression problem
+{col:coef for col,coef in zip(X.columns, lm.coef_)}
+
+#prints a bar chart with the coefficients as the values
+#NOTE! LArger coefficients doesn't mean it has more influence
+plt.bar(X.columns[2:],abs(lm.coef_[2:]))
+plt.xticks(rotation=90)
+plt.ylabel("$coefficients$")
+plt.show()
+
+# getting the R^2 of each individual feature and plotting it
+get_R2_features(lm)
+
 ######### EVALUATE THE MODEL
 lm.score(X_train,y_train)             # The score() method returns the coefficient of determination of the prediction.
 r2_score(y_test,predictions)          # could also use r2_score, it's the same thing
@@ -48,6 +64,9 @@ predictions = lr.predict(y_test)    # predict val
 r2_score(y_test,predictions)
 
 mse_prdictions = mean_squared_error(y_test, predictions)
+
+#plotting predicted vs real data
+plot_dis(y_test,predictions)
 
 # R-squared - % of the variance in our dependent variable (y) that can be explained by the model
 # Can be read that as x increases by 1, y is affected by the returning variable coefficient number
