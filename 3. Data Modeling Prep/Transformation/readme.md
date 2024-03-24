@@ -19,8 +19,10 @@ If the curve is a useful summary of the relationship, then we can use it to make
 |Power Function   |    y = ax^b|  |
 
 ## Polynomial Features
-Combining features together to create interaction terms. <br>
+Allows you to use a linear model to fit nonlinear data <br>
+Also good if the model is underfitting <br>
+It combining features together to create interaction terms. <br>
 - Multiplying
 - Division
-- Exponents
+- Exponents/Powers
 - Square Root
