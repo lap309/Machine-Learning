@@ -64,5 +64,20 @@ Similar to min-max but it focuses on the interquartile range, which works better
 Not between 0 and 1
 
 
-# Dimension Reduction
+# Feature Selection
+
+Recursive Feature Elimination (RFE)- allows you to do feature selection recursively and automatically<br>
+__DATA UST BE SCALED__ <br>
+- Step 1: Choose to measure the feautures based on coefficient weight or feature importance
+- Step 2: Explicitly define how many features we want to end up with
+- Step 3: Measures the different feature and eliminates the smalles value for the value of the coefficient or for the feature importance <br> <br>
+
+  Recursive Feature Elimination with Cross Validatin (RFECV) <br>
+  Performs RFE with cross validation. This will make sure that as we eliminate features, we double check which ones will actually affect the value or our error on that holdout set.
+
+
+## Dimension Reduction
+PCA
+
+
 
