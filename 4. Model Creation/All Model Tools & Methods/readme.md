@@ -9,7 +9,6 @@ __Model Underfitting__ <br>
 !!!! DATA MUST BE SCALED FIRST. Otherwise it will lead to excessive penalties
 Used to avoid overcomplicating the data and overfitting. 
 Meant to reduce overfitting, make the model flexible for other datasets, and reduce variance between future samples<br><br>
-Acts second handedly as feature selection. Because we are attributing a penalty for having a more complex model, the more features you have in the model, the more compelx the model will be. So it may lead to eliminating some features, and selecting which ones to include in the model. This elimination happens automatically when we run regularization though<br><br>
 
 #### LASSO (L1)
 - Penalizes the absolute value of the coefficients
