@@ -10,7 +10,7 @@ And the larger the regulatization portion, the larger the model cost function is
 
 
 Increasing $\lambda$ >> a higher penalty >>so more penalty for larger coefficients >> the less complex the model will be >>less variability (but potentially more bias)<br>
-Increasing $\lambda$ also decreases each one of the coefficients in the model
+Increasing $\lambda$ forces the coefficients to be smaller, thus restricting the variance
 
 There are several different types of regularization, and the difference is just between how the coefficients are penalized
 
