@@ -12,6 +12,10 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, rand
 
 #### Shuffle Split
 from sklearn.model_selection import ShuffleSplit
+strat_shuf_split = StratifiedShuffleSplit(n_splits=1, 
+                                          test_size=0.3, 
+                                          random_state=42)
+
 
 ###Stratified Shuffle split - use for highly imbalanced classes if you want to maintain the same porportions
 
