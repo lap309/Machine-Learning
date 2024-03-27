@@ -21,3 +21,9 @@ y_pred = logreg(x_train)
 #### Logistic Regression with Cross Validation
 from sklearn.linear_model import LogisticRegressionCV
 lr_l1 = LogisticRegressionCV(Cs=10, cv=4, penalty='l1', solver='liblinear').fit(X_train, y_train)
+
+
+# Predicting the probabilities rather than just the class
+logreg.predict_proba(x_train)
+
+########## Multi-Class Logistic Regression (rewatch videos for the code)
