@@ -10,4 +10,6 @@ We run a logistic regression of ]:<br>
 Class 1 vs. Everything Else (Class 2 and Class 3) to define the decision boundary for Class 1<br>
 Class 2 vs. Everything Else (Class 1 and Class 3) to define the decision boundary for Class 2<br>
 Class 3 vs. Everything Else (Class 1 and Class 2) to define the decision boundary for Class 3<br><Br>
-At the end, we end up with 3 logistic models splitting out their own probability. So the probability that x is in class 1, the probability that x is in class 2, and the probability that x is in class 3. And we take the model with the highest probability and assign x to that category.
+At the end, we end up with 3 logistic models splitting out their own probability. So the probability that x is in class 1, the probability that x is in class 2, and the probability that x is in class 3. And we take the model with the highest probability and assign x to that category. <br> <br>
+
+NOTE!!: Use the 'liblinear' solver if using multi-class 1 vs. all classification
