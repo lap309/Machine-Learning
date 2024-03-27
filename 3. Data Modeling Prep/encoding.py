@@ -57,6 +57,8 @@ def encode(cat_data):
 ################# encoding NOMINAL DATA
 from sklearn.preprocessing import LabelEncoder, LabelBinarizer
 #one hot encoder will remove the base column while get_dummies will not
+le= LabelEncoder()
+data['label_col'] = le.fit_transform(data['label_col'])
 
 
 ################# encoding ORDINAL/ORDERED VALUES
