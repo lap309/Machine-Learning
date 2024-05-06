@@ -1,5 +1,5 @@
 # Clustering
-Unsupervised technique where datapoints that are similar are grouped to each other to identify patterns in data
+Unsupervised technique where datapoints that are similar are grouped to each other to identify patterns in data (but the answer is not
 
 #### Applications of Clustering
 - Looking for trends in data
