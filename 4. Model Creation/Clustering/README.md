@@ -1,5 +1,9 @@
 # Clustering
-Unsupervised technique where datapoints that are similar are grouped to each other to identify patterns in data (but the answer is not
+Unsupervised technique where datapoints that are similar are grouped to each other to identify patterns in data (but the answer is not known) <Br>
+<br>
+Because the answer is not known in clustering problems, there is no answer guide or target output to compare the model results with.As such, the concept of overfitting does not apply to unsupervised learning and there is no need to perform a train/validation/test split nor to apply cross-validation. <br>
+<br>
+The full dataset can be input into the model, but it may still need to be scaled!!!
 
 #### Applications of Clustering
 - Looking for trends in data
