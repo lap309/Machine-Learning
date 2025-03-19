@@ -26,3 +26,5 @@ _Limitations_:
 
 _Limitations_:
 - Slower than K-means
+
+  ** DBSCAN (Density Based Spatial Clsutering of Applications with Noise)
