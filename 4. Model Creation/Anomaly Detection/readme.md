@@ -3,11 +3,12 @@
 __NOTES__: <br>
 __Classification - Supervised and Unsupervised__ <br>
 __Highly prone to unbalanced data and gernerally time sensitive (real time scoring or api)__ <br>
-__Consider recall as a metric (as opposed to accuracy)__
+__Consider recall as a metric (as opposed to accuracy). Other metrics follows general classification metrics (precision, recall, F1 score, AUC-ROC)__
 
 ------------------------------------------------- 
 
 Anomaly detection is about finding patterns of interest or small differences (outliers, exceptions, pecuiliarities) in the data that deviates from expected behavior and would otherwise go undetected. Another similar procedure is noise removal which can be very distracting in the training data for machine learning models. Both noise and anomalies can deter the model and negatively affect model performance <br>
+Anomaly Detection differs from outlier detection where outlier detection finds individual extreme values while anomaly detection identifies broader patterns that indicate risk. For example ,a single large transaction might be an outlier, but a pattern of unusual transactions across accounts may indicate fraud. <br>
 
 __Inliers: "normal" data points that should represent the majority__ <br>
 __Outliers: rare observations that differ statistically (by features or values)__ <br>
@@ -16,18 +17,18 @@ Having adaptability in your anomaly detection is crucial since most data is pron
 
 <p align=center>Types of Anomalies</p>
 
-| Type   | Description| Example    | Common Methods |
-| ---------------------------------- | ------- | ------- | ------|
+| Type   | Description| Example | Common Methods |
+| ------ | ---------- | ------- | ---------------|
 | Point Anomalies                    | single anomalous value or instance within a larger dataset | Ex: 60 degrees Celsius would be an anomaly | Statistical Methods|
 | Contextual (conditional) anomalies | values that are considered anomalies in a certain context  | Ex: 25 degrees Celsius would not be an anomaly in the summer, but it would be an anomaly in the winter. The context here is time/seasonality that determines the analogous status of the value | |
-| Collective/Cascading anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| Ex: If condition1 in the data is met, and then the temperature is 60 degrees, then it would be an anomaly| |
+| Collective/Sequential anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| Ex: If condition1 in the data is met, and then the temperature is 60 degrees, then it would be an anomaly. Common with financial stock prices or sensor logs| |
 
 # Methodologies
 | Technique   | Common Methods| Best For| Challenges | Notes |
-| ---------------------------------- | ------- | ------- | ------- | ------- |
-| Statistical Methods                  |Z-score, IQR, Grubb's test| Point Anomalies, simple, small data sets |Sensitive to data assumptions and skewed data. Not robust for contextual or collective anomalies | Consider standardization|
+| ------------| ------------- | ------- | ---------- | ----- |
+| Statistical Methods                  |Z-score, IQR, Grubb's test| Point Anomalies, simple, small data sets |Sensitive to data assumptions and skewed data - subject to high false positives. Has limited adaptability - Not robust for contextual or collective anomalies | Consider standardization|
 | Supervised Machine Learning | Isolation Forest, SVM, LOF | Divers anomalies| Requires labaled data | |
-| UnSupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined. Ideal for situations where anomalies are rare or unknown in advance, or detecting for unusual behavior. Additionally good for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
+| Unsupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined. Ideal for situations where anomalies are rare or unknown in advance, or detecting for unusual behavior. Additionally good for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
 | Deep Learning Methods| Autoencoders, LSTM networks, Neural Networks| Complex patterns, big data, time series| Computationally intensive| |
 
 
@@ -53,7 +54,12 @@ Sales:
 earlier detection on diagnoses or easier treatment
 
 Manufacturing, Industry: 
--	predictive maintenance
+-	predictive maintenance, equipment health in real-time
+-	risk management
+-	operational efficiency
+
+Cybersecurity:
+- 
   
 Healthcare:
 -	health condition monitoring
@@ -64,6 +70,8 @@ Finance/Insurance:
 -	fraud detection (in the case of fraudulent transactions, people are often deliberately trying to product inputs that mimic real data). Learning and adapting to identifying this fraud can be crucial for the company. Common method is isolation forest since single transactions may deviate in amount of frequency, making them easily identifiable by partitioning
 -	stock market analysis
 -	early detection of insider tracking
+-	financial planning
+-	financial forecasting
 
 Public Sector: 
 -	detection of unusual images from surveillance
@@ -73,7 +81,7 @@ Retail:
 
 
 # Steps to Building the Solution
-1.	Understand the Use Case and the Business Goals
+1. Understand the Use Case and the Business Goals
     1. Define and continually refine what constitutes an anomaly. It might constantly change, which means continual re-evaluation.
     2. Define goals and parameters for the project overall. For example, the end goal is probably not just to detect anomalies, but something larger that impacts the business, like block fraudulent charges, cure more patients by detecting health conditions earlier, increase revenue by anticipating future trends, etc. Having larger goals will allow you to better define the scope of the project and the expected output.
     3. Determine, once an anomaly is detected, what the system will do next. For example, send anomalies to another team for further analysis and review, automatic actions on an associated asset/account, etc.
@@ -82,9 +90,21 @@ Retail:
 2.	Get your data
 3.	Explore, Clean, and Enrich Data
 <br>This step in particular is very important for anomaly detection because often the data contains noise (usually errors, human and computer made) which tend to be similar to the actual anomalies. It is integral to have a deep understanding of what constitutes the difference between anomalies and non-anomalies if you have labeled data available
-4.	Build the model
-5.	Visualize and Monitor
+  1. Missing Values - inputation or drop data
+  2. Standardization - for consistency
+  3. Inconsistencies
+  4. Remove noise
+  5. Feature engineering - create new variables to highlight patterns
+6.	Build the model
+<br> Things to Consider:
+    1. Data Type - What data are you working with?
+    2. Anomaly Type - Do we know what an anomaly is? How are we defining an anomaly? What sort of anomaly are you looking for (point, contextual, sequential)?
+    3. What do we want to do once we have identified an anomaly?
+    4. Real Time Needs - batch processing vs continuous monitoring. LTSM and autoencoders are good for real time needs
+7. Evaluate
+   1. 
+9.	Visualize and Monitor
 <br>Visualizations are underrated in anomaly detection but can prove to be a good tool in testing anomaly detection because sometimes they are the clearest way to see outliers, especially in large datasets
-6.	Deploy with real world data
+10.	Deploy with real world data
 <br>In many cases, anomaly detection needs to be scored in real time as it is generally time sensitive
 
