@@ -28,7 +28,7 @@ Having adaptability in your anomaly detection is crucial since most data is pron
 | Statistical Methods                  |Z-score, IQR, Grubb's test| Point Anomalies, simple, small data sets |Sensitive to data assumptions and skewed data. Not robust for contextual or collective anomalies | Consider standardization |
 | Supervised Machine Learning | Isolation Forest, SVM, LOF | Divers anomalies| Requires labaled data | |
 | UnSupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined. Ideal for situations where anomalies are rare or unknown in advance, or detecting for unusual behavior. Additionally good for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
-| Deep Learning Methods| Autoencoders, LSTM networks, Neural Networks| Complex patterns, big data| Computationally intensive| |
+| Deep Learning Methods| Autoencoders, LSTM networks, Neural Networks| Complex patterns, big data, time series| Computationally intensive| |
 
 
 All types of models can be used with anomaly detection but you need to understand the business use case because what qualities as an anomaly and the subsequent process of detection will vastly vary based on the goal and application. <br>
