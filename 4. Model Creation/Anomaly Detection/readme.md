@@ -25,10 +25,10 @@ Having adaptability in your anomaly detection is crucial since most data is pron
 # Methodologies
 | Technique   | Methods| Best For| Challenges | Notes |
 | ---------------------------------- | ------- | ------- | ------- | ------- |
-| Statistical Methods                  |Z-score, IQR, Grubb's test| Simple, small data sets |Sensitive to data assumptions| Consider standardization |
+| Statistical Methods                  |Z-score, IQR, Grubb's test| Point Anomalies, simple, small data sets |Sensitive to data assumptions and skewed data. Not robust for contextual or collective anomalies | Consider standardization |
 | Supervised Machine Learning | Isolation Forest, SVM, LOF | Divers anomalies| Requires labaled data | |
-| UnSupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined, or for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
-| Deep Learning Methods| Autoencoders, LSTM networks| Complex patterns, big data| Computationally intensive| |
+| UnSupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined. Ideal for situations where anomalies are rare or unknown in advance, or detecting for unusual behavior. Additionally good for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
+| Deep Learning Methods| Autoencoders, LSTM networks, Neural Networks| Complex patterns, big data| Computationally intensive| |
 
 
 All types of models can be used with anomaly detection but you need to understand the business use case because what qualities as an anomaly and the subsequent process of detection will vastly vary based on the goal and application. <br>
@@ -45,6 +45,8 @@ Company/Business:
 -	preventing equipment damage therefore saving money
 -	identifying fraudulent transactions
 -	Cache Timing, what causes certain log requests to fail and other to load
+-	Network traffic
+-	Sensor data
   
 Sales: 
 -	to detect or predict slight changes in customer behavior that may result in a shift in selling, marketing strategy, or development. Allowing them to stay ahead of trends
