@@ -21,7 +21,7 @@ Having adaptability in your anomaly detection is crucial since most data is pron
 | ------ | ---------- | ------- | ---------------|
 | Point Anomalies                    | single anomalous value or instance within a larger dataset | Ex: 60 degrees Celsius would be an anomaly | Statistical Methods|
 | Contextual (conditional) anomalies | values that are considered anomalies in a certain context  | Ex: 25 degrees Celsius would not be an anomaly in the summer, but it would be an anomaly in the winter. The context here is time/seasonality that determines the analogous status of the value | |
-| Collective/Sequential anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| Ex: If condition1 in the data is met, and then the temperature is 60 degrees, then it would be an anomaly. Common with financial stock prices or sensor logs| |
+| Collective/Sequential anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| Ex: If condition1 in the data is met, and then the temperature is 60 degrees, then it would be an anomaly. Common with financial stock prices or sensor logs| NN |
 
 # Methodologies
 | Technique   | Common Methods| Best For| Challenges | Notes |
