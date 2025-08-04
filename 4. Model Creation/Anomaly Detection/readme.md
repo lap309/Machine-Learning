@@ -11,7 +11,7 @@ Anomaly detection is about finding patterns of interest or small differences (ou
 Anomaly Detection differs from outlier detection where outlier detection finds individual extreme values while anomaly detection identifies broader patterns that indicate risk. For example ,a single large transaction might be an outlier, but a pattern of unusual transactions across accounts may indicate fraud. <br>
 
 __Inliers: "normal" data points that should represent the majority__ <br>
-__Outliers: rare observations that differ statistically (by features or values)__ <br>
+__Anomalies: rare observations that differ statistically (by features or values)__ <br>
 <br>
 Having adaptability in your anomaly detection is crucial since most data is prone to changing over time. And while this process is concluded statistically, the final determination is often decided by an observer/human reader
 
@@ -102,7 +102,6 @@ Retail:
     3. What do we want to do once we have identified an anomaly?
     4. Real Time Needs - batch processing vs continuous monitoring. LTSM and autoencoders are good for real time needs
 7. Evaluate
-   1. 
 9.	Visualize and Monitor
 <br>Visualizations are underrated in anomaly detection but can prove to be a good tool in testing anomaly detection because sometimes they are the clearest way to see outliers, especially in large datasets
 10.	Deploy with real world data
