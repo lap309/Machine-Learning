@@ -16,16 +16,16 @@ Having adaptability in your anomaly detection is crucial since most data is pron
 
 <p align=center>Types of Anomalies</p>
 
-|    | |     |
-| ---------------------------------- | ------- | ------- |
-| Point Anomalies                    | single anomalous value or instance within a larger dataset | Ex: 60 degrees Celsius would be an anomaly |
-| Contextual (conditional) anomalies | values that are considered anomalies in a certain context  | Ex: 25 degrees Celsius would not be an anomaly in the summer, but it would be an anomaly in the winter. The context here is time/seasonality that determines the analogous status of the value |
-| Collective/Cascading anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| |
+| Type   | Description| Example    | Common Methods |
+| ---------------------------------- | ------- | ------- | ------|
+| Point Anomalies                    | single anomalous value or instance within a larger dataset | Ex: 60 degrees Celsius would be an anomaly | Statistical Methods|
+| Contextual (conditional) anomalies | values that are considered anomalies in a certain context  | Ex: 25 degrees Celsius would not be an anomaly in the summer, but it would be an anomaly in the winter. The context here is time/seasonality that determines the analogous status of the value | |
+| Collective/Cascading anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| Ex: If condition1 in the data is met, and then the temperature is 60 degrees, then it would be an anomaly| |
 
 # Methodologies
-| Technique   | Methods| Best For| Challenges | Notes |
+| Technique   | Common Methods| Best For| Challenges | Notes |
 | ---------------------------------- | ------- | ------- | ------- | ------- |
-| Statistical Methods                  |Z-score, IQR, Grubb's test| Point Anomalies, simple, small data sets |Sensitive to data assumptions and skewed data. Not robust for contextual or collective anomalies | Consider standardization |
+| Statistical Methods                  |Z-score, IQR, Grubb's test| Point Anomalies, simple, small data sets |Sensitive to data assumptions and skewed data. Not robust for contextual or collective anomalies | Consider standardization|
 | Supervised Machine Learning | Isolation Forest, SVM, LOF | Divers anomalies| Requires labaled data | |
 | UnSupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined. Ideal for situations where anomalies are rare or unknown in advance, or detecting for unusual behavior. Additionally good for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
 | Deep Learning Methods| Autoencoders, LSTM networks, Neural Networks| Complex patterns, big data, time series| Computationally intensive| |
@@ -61,7 +61,7 @@ Healthcare:
 -	seizure, tumor, etc. detection with image detection
 
 Finance/Insurance:
--	fraud detection (in the case of fraudulent transactions, people are often deliberately trying to product inputs that mimic real data. Learning and adapting to Identifying this fraud can be crucial for the company
+-	fraud detection (in the case of fraudulent transactions, people are often deliberately trying to product inputs that mimic real data). Learning and adapting to identifying this fraud can be crucial for the company. Common method is isolation forest since single transactions may deviate in amount of frequency, making them easily identifiable by partitioning
 -	stock market analysis
 -	early detection of insider tracking
 
