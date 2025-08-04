@@ -22,7 +22,14 @@ Having adaptability in your anomaly detection is crucial since most data is pron
 | Contextual (conditional) anomalies | values that are considered anomalies in a certain context  | Ex: 25 degrees Celsius would not be an anomaly in the summer, but it would be an anomaly in the winter. The context here is time/seasonality that determines the analogous status of the value |
 | Collective/Cascading anomalies               | when values are only considered anomalies when considered with another value in the same or another dataset. A set of data instance. Similar to contextual anomalies, but this is dependent on data alone| |
 
-# Models
+# Methodologies
+| Technique   | Methods| Best For| Challenges | Notes |
+| ---------------------------------- | ------- | ------- | ------- | ------- |
+| Statistical Methods                  |Z-score, IQR, Grubb's test| Simple, small data sets |Sensitive to data assumptions| Consider standardization |
+| Supervised Machine Learning | Isolation Forest, SVM, LOF | Divers anomalies| Requires labaled data | |
+| UnSupervised Machine Learning | Clustering| When data is unlabeled/anomalies are not pre-defined, or for experimenting and exploring with labeled data to see what the computer identifies| | Not subject to follow contextual use cases| |
+| Deep Learning Methods| Autoencoders, LSTM networks| Complex patterns, big data| Computationally intensive| |
+
 
 All types of models can be used with anomaly detection but you need to understand the business use case because what qualities as an anomaly and the subsequent process of detection will vastly vary based on the goal and application. <br>
 The nature of the data, the problem at hand, and the goals of the project are all things to consider before building a solution, making it hard to have a “universal” approach to anomaly detection. 
@@ -37,6 +44,7 @@ Understanding what causes these anomalies or why they occur, in order to prevent
 Company/Business:
 -	preventing equipment damage therefore saving money
 -	identifying fraudulent transactions
+-	Cache Timing, what causes certain log requests to fail and other to load
   
 Sales: 
 -	to detect or predict slight changes in customer behavior that may result in a shift in selling, marketing strategy, or development. Allowing them to stay ahead of trends
