@@ -24,6 +24,8 @@ These are more contextual cases and will depend on the specific business organiz
 
 ### Define Churn: Things to Consider
 - How are we defining a "user"? For example, is someone who uses the product/service only once then enver again going to be considered churn? What if they buy a product, then don't buy anything for 9 months, then buy again? Are they a new customer or a returning customer?
+  <br> ex: a user who hasn't taken any actino on the website in 4 months
+- A churn period that is too long risks predictive models with low churn rates and reduces performance. A churn period that is too short makes it difficult for the business to take action or gather enough data on churn causes.
 - Is there some minimal threshold after which a user should be considered and included in churn analysis? hwat is the time period/time frame?
 - Do we want to perform segmentation based on their behavior? Which customers do we care about? churn reduction campaigns should be targeted towards a well defined customer segment
 - How are we defining churn? When do we consider a consumer lost? When do we consider a customer at risk?
@@ -41,7 +43,7 @@ _The more resources the better for the  model to detect patterns_
 
 ### Clean Data and Enrish
 - Understand all your values and make contextual decision about what data to keep
-- Missing Data
+- Decide what to do with Missing Data (drop or re-assign values)
 
 ### Common Visualizations
 - The evolution of churn over time and targeted churners
