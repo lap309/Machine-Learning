@@ -1,6 +1,7 @@
 # Churn Prediction (Attrition)
 In it's simplest form, churn/attrition is when customers leave and stop buying your product, using your service, or leave your company <br>
-Predictive models are built to accurately predict churn and then companies take action by building targeted marketing campaigns around preventing it or by making product changes to combat churn.
+For most businesses, customer churn is a critical metric because it is much less expensive to retain existing customers than it is to acquire new customers. <br>
+To detect early signs fo potential churn, we first develop a holistic view of the customers and their interactions, then build predictive models to accurately predict churn and then companies take action by building targeted marketing campaigns around preventing it or by making product changes to combat churn.
 <br>
 Quick Notes: Classification Model or Clustering Model <br>
 It's a good idea to start with unsupervised clustering even if you have labeled data. This will find relevant features that are most relevant to your churn calculations. <br>
@@ -80,6 +81,10 @@ SVM <br>
 When you first start working on the model, focus on optimizing for the right features and running simpler models. Once you know you have the best features, you can optimize and find the best model. This will save time and resources in the long run. <br><br>
 Decide what you are measuring and what you want to optimize towards. Make sure you choose an evaluation metric that aligns with the business goals.
 
+### Post Analysis
+Are there any patterns of churn by common demographics? (Age, Gender, Location, service type, etc.) <br>
+Is there a specific season where we saw higher churn rates?
+
 ### Next Steps - what to do after you build the model?
 Now that I know who is likely to churn, now what? <br>
 Many business infer that theose who scored the highest (i.e are most likely to churn) should be the ones to target. While the ideology is there, there are additional things to consider before finalizing the list of people to target for future marketing campaigns. <br>
@@ -93,3 +98,4 @@ In the cart below, only Persuadables (along with randomized control group) would
 |     -   | **Persuadables** <br>(__who we want to target__) those that would have had a negative response byt are then positively persuaded by marketing | **Lost causes**  those who will have a negative response with or without marketing and thus represent wasted marketing costs|
 
 
+https://www.kaggle.com/code/bhartiprasad17/customer-churn-prediction/comments
