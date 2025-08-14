@@ -41,21 +41,31 @@ When defining churn, it may be possible that the definition needs to be adjusted
 (Optional) static demographic inforamtion about users or types of user actions. <br>
 _The more resources the better for the  model to detect patterns_
 
-### Clean Data and Enrish
+### Clean Data and Enrich
 - Understand all your values and make contextual decision about what data to keep
 - Decide what to do with Missing Data (drop or re-assign values)
+- If you are considering calculations and the churn definition is time based, then make sure to do rolling calculations or calculations over a time period instead of total all-time purchases
+
+### Splitting the Data
+In most cases, a time-based split will be the optimal choice. It's not recommended to use a random split as this will cause overfitting and will not allow churn predictions to be generalized to the future
 
 ### Common Visualizations
 - The evolution of churn over time and targeted churners
 - Which product features have an impact on churn
 - Descriptive statistics of those key features for easy reference or visual simulations illustrating how changing features would impact churn probability
 - Additonal insights about the chosen churn model
+- churn rates by location
 - Churn rates by all features in the data
 
 ### Building a Model
+Train and Test Set: If you have defined a churn period of 4 months, and you have labeled data up until April 2025. Then you will want your train dataset to be up until Sept 2024, your validation set to be Sept 2024-Jan 2025, and Jan-Apr 2025 as the test set. Any data after that can be used in production.
+
 One of the common pitfalls for a churn model is training your  model on both past qand future events. To avoid this common mistake, answer the question: <br>
 When your model is in production, what data will be available to you? <br>
+When would you like your prediction to be: next week? Next month?<br>
 This should be the only data included in the train set <br>
+<br>
+When you begin modeling, start off small. Little by little, continue to add features and evaluate their effect on the accuracy of the model. Complex models will not always be the answer, instead focus on optimizing the right features and running simpler models.
 <br>
 Another common pitfall is perceiving the model as a one shot study. You won't do much with a single iteration of a customer churn prediction model and you risk overlooking critical aspects in the project such as scalability and reproducibility. Multiple iterations help uyou create a successful scalable and long-term strategy to retain and increase customer loyalty. <br>
 <br>
@@ -69,3 +79,17 @@ SVM <br>
 ### Optimizing
 When you first start working on the model, focus on optimizing for the right features and running simpler models. Once you know you have the best features, you can optimize and find the best model. This will save time and resources in the long run. <br><br>
 Decide what you are measuring and what you want to optimize towards. Make sure you choose an evaluation metric that aligns with the business goals.
+
+### Next Steps - what to do after you build the model?
+Now that I know who is likely to churn, now what? <br>
+Many business infer that theose who scored the highest (i.e are most likely to churn) should be the ones to target. While the ideology is there, there are additional things to consider before finalizing the list of people to target for future marketing campaigns. <br>
+You could lump all the people likely to churn into an audience to target with a marketing campaign, but realisitcall,y not every single customer who churns will come back. Some customers are lost causes and we don't want to spend money on those profiles. To save time and resources, you can go one step further and use **uplift modeling** and **client clustering** to drive return on investment (ROI), essentially spending time and resources targesting churners who will respond positively to your campaign. <br>
+Uplift models look to optimzie the effects of marketing campaigns by predicting which customers are likely to take the desired action. They score customers into one of the following groups to maximize results and minimize wasted moeny and effort.<br>
+In the cart below, only Persuadables (along with randomized control group) would be targeted. We don't want to target lost causes, and sure thing customers would take action whether we market to them or not, so we can save our money. We want to target the persuadables sub-group.<br>
+
+|         |       +     |      -   |
+|---------|-------------|----------|
+|     +   | **Sure Things** <br> Those that would react positively either way and thus represent wasted marketing costs  | **Do Not Disturbs** <br> those who would have had a positive responce if they didn't receive any marketing, but after marketing react negatively and thus should not be targeted|
+|     -   | **Persuadables** <br>(__who we want to target__) those that would have had a negative response byt are then positively persuaded by marketing | **Lost causes**  those who will have a negative response with or without marketing and thus represent wasted marketing costs|
+
+
