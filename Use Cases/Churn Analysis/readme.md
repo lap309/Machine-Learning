@@ -21,9 +21,18 @@ These are more contextual cases and will depend on the specific business organiz
 - ML for causation, develop a model to understand the reasons causing the churn. This allows clients to attack the root cause of what's causing the churn and reduce it
 - Marketing campaigns to re-engage likely churners
 - Uncover potential deeper drivers of churn that can be addressed long term
-- Increasing and retraining current customers
+- Increasing and reraining current customers (retention strategy)
 
-### Define Churn: Things to Consider
+### Industries that monitor Churn
+Most industries that rely on subscriptions, customer/buyers will be interested in monitoring churn. This spans across several industries, some examples listed below:
+- streaming services, entertainment
+- digital media/marketing
+- consumer goods and retail
+- energy/utilities
+- telecom/wireless
+- B2C services
+
+### Define Churn and Customers: Things to Consider
 - How are we defining a "user"? For example, is someone who uses the product/service only once then enver again going to be considered churn? What if they buy a product, then don't buy anything for 9 months, then buy again? Are they a new customer or a returning customer?
   <br> ex: a user who hasn't taken any actino on the website in 4 months
 - A churn period that is too long risks predictive models with low churn rates and reduces performance. A churn period that is too short makes it difficult for the business to take action or gather enough data on churn causes.
@@ -40,7 +49,11 @@ When defining churn, it may be possible that the definition needs to be adjusted
 *Customer Identifier <br>
 *A date/time of that customer's last interaction <br>
 (Optional) static demographic inforamtion about users or types of user actions. <br>
-_The more resources the better for the  model to detect patterns_
+_The more resources the better for the  model to detect patterns_ <br>
+- subscription information (products customers have bought, activation and cancellation dates, add ons)
+- payment information (how much they pay, method of payment)
+- product usage information (login information, clicks, minutes of interaction)
+- interaction information (chats or calls made by clients, rating on support services, claim details)
 
 ### Clean Data and Enrich
 - Understand all your values and make contextual decision about what data to keep
